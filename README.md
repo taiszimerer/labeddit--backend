@@ -2,17 +2,19 @@
 Este é o backend do projeto Labeddit, uma rede social onde os usuários podem fazer login, cadastro, criar, curtir e comentar posts.
 
 ### Tecnologias utilizadas
-Node.js
-Express
-Typescript
-SQLite
-Requisitos do projeto
+- Node.js
+- Express
+- Typescript
+- SQLite
+
+
+## Requisitos do projeto
 Para utilizar a API, é necessário que o usuário esteja autenticado. Para isso, é necessário enviar um token JWT válido no cabeçalho "Authorization" de cada requisição. O token é obtido ao fazer login na rota correspondente.
 
 #### Endpoints
 Signup
 Permite que um usuário crie uma conta na plataforma.
-
+```bash
 URL: /signup
 Método: POST
 Body:
@@ -21,6 +23,7 @@ Body:
   "email": "string",
   "password": "string"
 }
+```
 
 Resposta esperada:
 
