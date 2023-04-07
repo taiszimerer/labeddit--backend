@@ -25,8 +25,11 @@ npm start
 #### Endpoints
 #### Signup
 Permite que um usuário crie uma conta na plataforma.
+
 URL: /signup
+
 Método: POST
+
 ```bash
 Body:
 {
@@ -53,8 +56,11 @@ Resposta esperada:
 
 #### Login
 Permite que um usuário faça login na plataforma, autenticando o usuário e devolvendo um token de acesso.
-URL: /login
-Método: POST
+
+URL: /login 
+
+Método: POST 
+
 Body:
 ```bash
 {
@@ -78,7 +84,9 @@ Resposta esperada:
 
 #### Criar um post
 Permite que um usuário autenticado crie um novo post.
+
 URL: /posts
+
 Método: POST
 Body:
 ```bash
@@ -102,8 +110,11 @@ Resposta esperada:
 ```
 #### Listar todos os posts
 Permite que um usuário autenticado liste todos os posts.
+
 URL: /posts
+
 Método: GET
+
 Resposta esperada:
 ```bash
  {    
@@ -118,8 +129,11 @@ Resposta esperada:
 
 ### Entrar em um post específico
 Esse endpoint serve para acessar detalhes de um post específico, como likes e respostas de outros usuários.
+
 URL: /posts/:id
+
 Método: GET
+
 Resposta esperada:
 ```bash
  {    
@@ -135,8 +149,11 @@ Resposta esperada:
 
 #### Curtir um post
 Permite que um usuário autenticado curta um post.
+
 URL: /posts/:id/like
+
 Método: PUT
+
 Resposta esperada:
 ```bash
 
@@ -147,8 +164,11 @@ Resposta esperada:
 
 #### Descurtir um post
 Permite que um usuário autenticado descurta um post.
+
 URL: /posts/:id/dislike
+
 Método: PUT
+
 Resposta esperada:
 ```bash
 {
@@ -157,8 +177,11 @@ Resposta esperada:
 ```
 #### Comentar em um post
 Permite que um usuário autenticado comente em um post.
+
 URL: /posts/:id/comments
+
 Método: POST
+
 Resposta esperada: 
 ```bash
  {    
@@ -169,9 +192,13 @@ Resposta esperada:
  "created_at": "string" 
  }
  ```
+
  #### Retorna a lista de comentarios de um post
+	
 URL: /posts/:id/comments
+
 Método: GET
+
 Resposta esperada:
 ```bash
 [
@@ -194,8 +221,11 @@ Resposta esperada:
  
  #### Like ao comentario
  Endpoint que permite adicionar like a um comentário especifico.
+	
  URL: /comments/:id/like
+	
  Método: PUT
+	
  Resposta esperada:
  ```bash
   {    
@@ -209,8 +239,11 @@ Resposta esperada:
   
  #### Dislike ao comentario
  Endpoint que permite adicionar dislike a um comentário especifico.
+	
  URL: /comments/:id/dislike
+	
  Método: PUT
+	
  Resposta esperada:
  ```bash
   {    
@@ -223,7 +256,7 @@ Resposta esperada:
   ```
   
   ### Considerações Finais
-  Este projeto foi desenvolvido com o intuito de demonstrar a implementação de uma rede social basica usando NodeJs, Express, TypeScript e Sqlite. Esperamos que esse README tenha sido util para ajuda-lo a entender o funcionamento do projeto, e fazer o deploy em sua própria máquina. Se você tiver qualquer dúvida ou sugestão de melhoria, por favor, não hesite em entrar em contato comigo. Agradeço pelo interesse em meu projeto, espero que possa ser util para você em seus próprios projetos. 
+ ##### Este projeto foi desenvolvido com o intuito de demonstrar a implementação de uma rede social basica usando NodeJs, Express, TypeScript e Sqlite. Esperamos que esse README tenha sido util para ajuda-lo a entender o funcionamento do projeto, e fazer o deploy em sua própria máquina. Se você tiver qualquer dúvida ou sugestão de melhoria, por favor, não hesite em entrar em contato comigo. Agradeço pelo interesse em meu projeto, espero que possa ser util para você em seus próprios projetos. 
   
   
 
