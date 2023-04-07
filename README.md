@@ -39,7 +39,8 @@ Body:
 Resposta esperada:
 ```bash
 {
-  "user": {
+  "user":
+  {
     "id": "string",
     "name": "string",
     "email": "string",
@@ -51,7 +52,7 @@ Resposta esperada:
 
 
 #### Login
-Permite que um usuário faça login na plataforma.
+Permite que um usuário faça login na plataforma, autenticando o usuário e devolvendo um token de acesso.
 URL: /login
 Método: POST
 Body:
@@ -64,7 +65,8 @@ Body:
 Resposta esperada:
 ```bash
 {
-  "user": {
+  "user": 
+  {
     "id": "string",
     "name": "string",
     "email": "string",
@@ -87,7 +89,8 @@ Body:
 Resposta esperada:
 ```bash
 {
-  "post": {
+  "post":
+  {
     "id": "string",
     "content": "string",
     "creatorId": "string",
@@ -112,6 +115,24 @@ Resposta esperada:
  "comments": 0  
  }
 ```
+
+### Entrar em um post específico
+Esse endpoint serve para acessar detalhes de um post específico, como likes e respostas de outros usuários.
+URL: /posts/:id
+Método: GET
+Resposta esperada:
+```bash
+ {    
+ "id": "string",   
+ "content": "string",   
+ "creatorId": "string",   
+ "createdAt": "string",   
+ "likes": 0,   
+ "comments": 0  
+ }
+```
+
+
 #### Curtir um post
 Permite que um usuário autenticado curta um post.
 URL: /posts/:id/like
@@ -134,9 +155,81 @@ Resposta esperada:
   "likes": 0
 }
 ```
-
 #### Comentar em um post
 Permite que um usuário autenticado comente em um post.
-
 URL: /posts/:id/comments
 Método: POST
+Resposta esperada: 
+```bash
+ {    
+ "id": "string",   
+ "content": "string",   
+ "creator_id": "string",   
+ "likes": 1,     
+ "created_at": "string" 
+ }
+ ```
+ #### Retorna a lista de comentarios de um post
+URL: /posts/:id/comments
+Método: GET
+Resposta esperada:
+```bash
+[
+ {    
+ "id": "string",   
+ "content": "string",   
+ "creator_id": "string",     
+ "likes": 0,   
+ "created_at": "string"  
+ },
+  {    
+ "id": "string",   
+ "content": "string",   
+ "creator_id": "string",     
+ "likes": 0,   
+ "created_at": "string"  
+ }
+ ]
+ ```
+ 
+ #### Like ao comentario
+ Endpoint que permite adicionar like a um comentário especifico.
+ URL: /comments/:id/like
+ Método: PUT
+ Resposta esperada:
+ ```bash
+  {    
+  "id": "string",   
+  "content": "string",   
+  "creator_id": "string",     
+  "likes": 1,   
+  "created_at": "string"  
+  }
+  ```
+  
+ #### Dislike ao comentario
+ Endpoint que permite adicionar dislike a um comentário especifico.
+ URL: /comments/:id/dislike
+ Método: PUT
+ Resposta esperada:
+ ```bash
+  {    
+  "id": "string",   
+  "content": "string",   
+  "creator_id": "string",     
+  "likes": 0,   
+  "created_at": "string"  
+  }
+  ```
+  
+  ### Considerações Finais
+  Este projeto foi desenvolvido com o intuito de demonstrar a implementação de uma rede social basica usando NodeJs, Express, TypeScript e Sqlite. Esperamos que esse README tenha sido util para ajuda-lo a entender o funcionamento do projeto, e fazer o deploy em sua própria máquina. Se você tiver qualquer dúvida ou sugestão de melhoria, por favor, não hesite em entrar em contato comigo. Agradeço pelo interesse em meu projeto, espero que possa ser util para você em seus próprios projetos. 
+  
+  
+
+
+
+
+
+
+
