@@ -1,5 +1,6 @@
 {
-    "name": "labeddit--backend",
+    
+    "name": "labeddit-backend",
     "version": "1.0.0",
     "description": "",
     "main": "index.js",
