@@ -192,32 +192,6 @@ Resposta esperada:
  "created_at": "string" 
  }
  ```
-
- #### Retorna a lista de comentarios de um post
-	
-URL: /posts/:id/comments
-
-Método: GET
-
-Resposta esperada:
-```bash
-[
- {    
- "id": "string",   
- "content": "string",   
- "creator_id": "string",     
- "likes": 0,   
- "created_at": "string"  
- },
-  {    
- "id": "string",   
- "content": "string",   
- "creator_id": "string",     
- "likes": 0,   
- "created_at": "string"  
- }
- ]
- ```
  
  #### Like ao comentario
  Endpoint que permite adicionar like a um comentário especifico.  Requer autenticação.
