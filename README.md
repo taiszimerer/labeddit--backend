@@ -12,7 +12,7 @@ Este é o backend do projeto Labeddit, uma rede social onde os usuários podem f
 Para utilizar a API, é necessário que o usuário esteja autenticado. Para isso, é necessário enviar um token JWT válido no cabeçalho "Authorization" de cada requisição. O token é obtido ao fazer login na rota correspondente.
 
 #### Endpoints
-Signup
+#### Signup
 Permite que um usuário crie uma conta na plataforma.
 ```bash
 URL: /signup
@@ -26,7 +26,7 @@ Body:
 ```
 
 Resposta esperada:
-
+```bash
 {
   "user": {
     "id": "string",
@@ -36,23 +36,22 @@ Resposta esperada:
   },
   "token": "string"
 }
+```
 
 
-Login
+#### Login
 Permite que um usuário faça login na plataforma.
-
+```bash
 URL: /login
 Método: POST
 Body:
-json
-Copy code
 {
   "email": "string",
   "password": "string"
 }
+```
 Resposta esperada:
-json
-Copy code
+```bash
 {
   "user": {
     "id": "string",
@@ -62,20 +61,20 @@ Copy code
   },
   "token": "string"
 }
-Criar um post
-Permite que um usuário autenticado crie um novo post.
+```
 
+#### Criar um post
+Permite que um usuário autenticado crie um novo post.
+```bash
 URL: /posts
 Método: POST
 Body:
-css
-Copy code
 {
   "content": "string"
 }
+```
+```bash
 Resposta esperada:
-json
-Copy code
 {
   "post": {
     "id": "string",
@@ -86,38 +85,45 @@ Copy code
     "comments": 0
   }
 }
-Listar todos os posts
+```
+#### Listar todos os posts
 Permite que um usuário autenticado liste todos os posts.
 
+```bash
 URL: /posts
 Método: GET
 Resposta esperada:
-css
-Copy code
-[  {    "id": "string",    "content": "string",    "creatorId": "string",    "createdAt": "string",    "likes": 0,    "comments": 0  },  {    "id": "string",    "content": "string",    "creatorId": "string",    "createdAt": "string",    "likes": 0,    "comments": 0  },  ...]
-Curtir um post
+ {    
+ "id": "string",   
+ "content": "string",   
+ "creatorId": "string",   
+ "createdAt": "string",   
+ "likes": 0,   
+ "comments": 0  }, 
+```
+#### Curtir um post
 Permite que um usuário autenticado curta um post.
-
+```bash
 URL: /posts/:id/like
 Método: PUT
 Resposta esperada:
-json
-Copy code
 {
   "likes": 1
 }
-Descurtir um post
-Permite que um usuário autenticado descurta um post.
+```
 
+#### Descurtir um post
+Permite que um usuário autenticado descurta um post.
+```bash
 URL: /posts/:id/dislike
 Método: PUT
 Resposta esperada:
-json
-Copy code
 {
   "likes": 0
 }
-Comentar em um post
+```
+
+#### Comentar em um post
 Permite que um usuário autenticado comente em um post.
 
 URL: /posts/:id/comments
