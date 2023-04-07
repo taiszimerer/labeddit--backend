@@ -83,7 +83,7 @@ Resposta esperada:
 ```
 
 #### Criar um post
-Permite que um usuário autenticado crie um novo post.
+Permite que um usuário autenticado crie um novo post. Requer autenticação.
 
 URL: /posts
 
@@ -148,7 +148,7 @@ Resposta esperada:
 
 
 #### Curtir um post
-Permite que um usuário autenticado curta um post.
+Permite que um usuário autenticado curta um post.  Requer autenticação.
 
 URL: /posts/:id/like
 
@@ -163,7 +163,7 @@ Resposta esperada:
 ```
 
 #### Descurtir um post
-Permite que um usuário autenticado descurta um post.
+Permite que um usuário autenticado descurta um post. Requer autenticação.
 
 URL: /posts/:id/dislike
 
@@ -176,7 +176,7 @@ Resposta esperada:
 }
 ```
 #### Comentar em um post
-Permite que um usuário autenticado comente em um post.
+Permite que um usuário autenticado comente em um post.  Requer autenticação.
 
 URL: /posts/:id/comments
 
@@ -220,7 +220,7 @@ Resposta esperada:
  ```
  
  #### Like ao comentario
- Endpoint que permite adicionar like a um comentário especifico.
+ Endpoint que permite adicionar like a um comentário especifico.  Requer autenticação.
 	
  URL: /comments/:id/like
 	
@@ -238,7 +238,7 @@ Resposta esperada:
   ```
   
  #### Dislike ao comentario
- Endpoint que permite adicionar dislike a um comentário especifico.
+ Endpoint que permite adicionar dislike a um comentário especifico.  Requer autenticação.
 	
  URL: /comments/:id/dislike
 	
