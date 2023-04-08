@@ -231,6 +231,12 @@ Resposta esperada:
   
   ### Considerações Finais
  ##### Este projeto foi desenvolvido com o intuito de demonstrar a implementação de uma rede social basica usando NodeJs, Express, TypeScript e Sqlite. Esperamos que esse README tenha sido util para ajuda-lo a entender o funcionamento do projeto, e fazer o deploy em sua própria máquina. Se você tiver qualquer dúvida ou sugestão de melhoria, por favor, não hesite em entrar em contato comigo. Agradeço pelo interesse em meu projeto, espero que possa ser util para você em seus próprios projetos. 
+ 
+ 
+## Deploy do projeto:
+
+## Documentação API: 
+https://documenter.getpostman.com/view/24460855/2s93XsWkhs
   
   
 
