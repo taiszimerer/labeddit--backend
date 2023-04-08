@@ -17,7 +17,7 @@ Labeddit é uma aplicação de rede social de posts e interações entre usuári
 ## Como rodar a aplicação
 1. Faça um clone deste repositorio em sua máquina: 
 ```bash
-git clone https://github.com/taiszimerer/labeddit--backend.git
+git clone https://github.com/taiszimerer/labeddit-backend.git
 ```
 2. Na raiz do projeto, instale as dependências:
 ```bash
