@@ -11,7 +11,7 @@ Este é o backend do projeto Labeddit, uma rede social onde os usuários podem f
 ## Como rodar a aplicação
 1. Faça um clone deste repositorio em sua máquina: 
 ```bash
-git clone https://github.com/taiszimerer/labeddit--backend.git
+git clone https://github.com/taiszimerer/labeddit-backend.git
 ```
 2. Na raiz do projeto, instale as dependências:
 ```bash
