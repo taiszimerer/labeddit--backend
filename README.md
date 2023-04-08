@@ -1,5 +1,11 @@
- ## Labeddit Backend
-Este é o backend do projeto Labeddit, uma rede social onde os usuários podem fazer login, cadastro, criar, curtir e comentar posts.
+[![Badge](https://img.shields.io/badge/author-Tais%20Marinheiro%20Zimerer-blue)](https://github.com/taiszimerer)
+[![Badge](https://img.shields.io/badge/license-N/A-red)]()
+
+## Labeddit Backend
+Este é o backend do projeto Labeddit - Full Stack.
+
+
+Labeddit é uma aplicação de rede social de posts e interações entre usuários. Os usuários podem fazer login ou criar um novo cadastro para acessar o feed de posts, onde podem ver os posts de outros usuários e criar seus próprios posts. A aplicação também permite aos usuários responder e interagir com as publicações, bem como curtir e comentar posts e comentários.
 
 ### Tecnologias utilizadas
 - Node.js
@@ -83,7 +89,7 @@ Resposta esperada:
 ```
 
 #### Criar um post
-Permite que um usuário autenticado crie um novo post.
+Permite que um usuário autenticado crie um novo post. Requer autenticação.
 
 URL: /posts
 
@@ -148,7 +154,7 @@ Resposta esperada:
 
 
 #### Curtir um post
-Permite que um usuário autenticado curta um post.
+Permite que um usuário autenticado curta um post.  Requer autenticação.
 
 URL: /posts/:id/like
 
@@ -163,7 +169,7 @@ Resposta esperada:
 ```
 
 #### Descurtir um post
-Permite que um usuário autenticado descurta um post.
+Permite que um usuário autenticado descurta um post. Requer autenticação.
 
 URL: /posts/:id/dislike
 
@@ -176,7 +182,7 @@ Resposta esperada:
 }
 ```
 #### Comentar em um post
-Permite que um usuário autenticado comente em um post.
+Permite que um usuário autenticado comente em um post.  Requer autenticação.
 
 URL: /posts/:id/comments
 
@@ -192,35 +198,9 @@ Resposta esperada:
  "created_at": "string" 
  }
  ```
-
- #### Retorna a lista de comentarios de um post
-	
-URL: /posts/:id/comments
-
-Método: GET
-
-Resposta esperada:
-```bash
-[
- {    
- "id": "string",   
- "content": "string",   
- "creator_id": "string",     
- "likes": 0,   
- "created_at": "string"  
- },
-  {    
- "id": "string",   
- "content": "string",   
- "creator_id": "string",     
- "likes": 0,   
- "created_at": "string"  
- }
- ]
- ```
  
  #### Like ao comentario
- Endpoint que permite adicionar like a um comentário especifico.
+ Endpoint que permite adicionar like a um comentário especifico.  Requer autenticação.
 	
  URL: /comments/:id/like
 	
@@ -238,7 +218,7 @@ Resposta esperada:
   ```
   
  #### Dislike ao comentario
- Endpoint que permite adicionar dislike a um comentário especifico.
+ Endpoint que permite adicionar dislike a um comentário especifico.  Requer autenticação.
 	
  URL: /comments/:id/dislike
 	
@@ -254,12 +234,26 @@ Resposta esperada:
   "created_at": "string"  
   }
   ```
+ 
+ 
+#### Deploy Backend do projeto:
+
+#### Documentação API: 
+https://documenter.getpostman.com/view/24460855/2s93XsWkhs
+
+####  Repositório Frontend do projeto:
+https://github.com/taiszimerer/labeddit-front
+
+####  Deploy Frontend do projeto: 
+t-labeddit.surge.sh
+
+### Autoria e Contato
+
+Este projeto foi desenvolvido por Tais Marinheiro Zimerer. Se você tiver dúvidas ou sugestões sobre o projeto, entre em contato pelo email taiszimerer@gmail.com.
+  
   
   ### Considerações Finais
- ##### Este projeto foi desenvolvido com o intuito de demonstrar a implementação de uma rede social basica usando NodeJs, Express, TypeScript e Sqlite. Esperamos que esse README tenha sido util para ajuda-lo a entender o funcionamento do projeto, e fazer o deploy em sua própria máquina. Se você tiver qualquer dúvida ou sugestão de melhoria, por favor, não hesite em entrar em contato comigo. Agradeço pelo interesse em meu projeto, espero que possa ser util para você em seus próprios projetos. 
-  
-  
-
+ Este projeto foi desenvolvido com o intuito de demonstrar a implementação de uma rede social basica usando ReactJs, JavaScript, Chakra Ui como biblioteca para o layout e integração com a API desenvolvida por mim no Backend do projeto. Esperamos que esse README tenha sido util para ajuda-lo a entender o funcionamento do projeto, e fazer o deploy em sua própria máquina. Se você tiver qualquer dúvida ou sugestão de melhoria, por favor, não hesite em entrar em contato comigo. Agradeço pelo interesse em meu projeto, espero que possa ser util para você em seus próprios projetos.
 
 
 
