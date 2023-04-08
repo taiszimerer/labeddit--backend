@@ -1,5 +1,7 @@
  ## Labeddit Backend
 Este é o backend do projeto Labeddit - Full Stack.
+
+
 Labeddit é uma aplicação de rede social de posts e interações entre usuários. Os usuários podem fazer login ou criar um novo cadastro para acessar o feed de posts, onde podem ver os posts de outros usuários e criar seus próprios posts. A aplicação também permite aos usuários responder e interagir com as publicações, bem como curtir e comentar posts e comentários.
 
 ### Tecnologias utilizadas
