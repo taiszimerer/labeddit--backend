@@ -1,4 +1,7 @@
- ## Labeddit Backend
+[![Badge](https://img.shields.io/badge/author-Tais%20Marinheiro%20Zimerer-blue)](https://github.com/taiszimerer)
+[![Badge](https://img.shields.io/badge/license-N/A-red)]()
+
+## Labeddit Backend
 Este é o backend do projeto Labeddit - Full Stack.
 
 
