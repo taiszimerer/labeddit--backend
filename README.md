@@ -1,5 +1,6 @@
  ## Labeddit Backend
-Este é o backend do projeto Labeddit, uma rede social onde os usuários podem fazer login, cadastro, criar, curtir e comentar posts.
+Este é o backend do projeto Labeddit - Full Stack.
+Labeddit é uma aplicação de rede social de posts e interações entre usuários. Os usuários podem fazer login ou criar um novo cadastro para acessar o feed de posts, onde podem ver os posts de outros usuários e criar seus próprios posts. A aplicação também permite aos usuários responder e interagir com as publicações, bem como curtir e comentar posts e comentários.
 
 ### Tecnologias utilizadas
 - Node.js
@@ -233,10 +234,16 @@ Resposta esperada:
  ##### Este projeto foi desenvolvido com o intuito de demonstrar a implementação de uma rede social basica usando NodeJs, Express, TypeScript e Sqlite. Esperamos que esse README tenha sido util para ajuda-lo a entender o funcionamento do projeto, e fazer o deploy em sua própria máquina. Se você tiver qualquer dúvida ou sugestão de melhoria, por favor, não hesite em entrar em contato comigo. Agradeço pelo interesse em meu projeto, espero que possa ser util para você em seus próprios projetos. 
  
  
-## Deploy do projeto:
+## Deploy Backend do projeto:
 
 ## Documentação API: 
 https://documenter.getpostman.com/view/24460855/2s93XsWkhs
+
+## Repositório Frontend do projeto:
+https://github.com/taiszimerer/labeddit-front
+
+## Deploy Frontend do projeto: 
+t-labeddit.surge.sh
   
   
 
