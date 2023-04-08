@@ -234,28 +234,26 @@ Resposta esperada:
   "created_at": "string"  
   }
   ```
-  
-  ### Considerações Finais
- ##### Este projeto foi desenvolvido com o intuito de demonstrar a implementação de uma rede social basica usando NodeJs, Express, TypeScript e Sqlite. O projeto terá integração com a parte de Frontend. Esperamos que esse README tenha sido util para ajuda-lo a entender o funcionamento do projeto, e fazer o deploy em sua própria máquina. Se você tiver qualquer dúvida ou sugestão de melhoria, por favor, não hesite em entrar em contato comigo. Agradeço pelo interesse em meu projeto, espero que possa ser util para você em seus próprios projetos. 
  
  
-## Deploy Backend do projeto:
+#### Deploy Backend do projeto:
 
-## Documentação API: 
+#### Documentação API: 
 https://documenter.getpostman.com/view/24460855/2s93XsWkhs
 
-## Repositório Frontend do projeto:
+####  Repositório Frontend do projeto:
 https://github.com/taiszimerer/labeddit-front
 
-## Deploy Frontend do projeto: 
+####  Deploy Frontend do projeto: 
 t-labeddit.surge.sh
 
-## Autoria e Contato
+### Autoria e Contato
 
 Este projeto foi desenvolvido por Tais Marinheiro Zimerer. Se você tiver dúvidas ou sugestões sobre o projeto, entre em contato pelo email taiszimerer@gmail.com.
   
   
-
+  ### Considerações Finais
+ Este projeto foi desenvolvido com o intuito de demonstrar a implementação de uma rede social basica usando ReactJs, JavaScript, Chakra Ui como biblioteca para o layout e integração com a API desenvolvida por mim no Backend do projeto. Esperamos que esse README tenha sido util para ajuda-lo a entender o funcionamento do projeto, e fazer o deploy em sua própria máquina. Se você tiver qualquer dúvida ou sugestão de melhoria, por favor, não hesite em entrar em contato comigo. Agradeço pelo interesse em meu projeto, espero que possa ser util para você em seus próprios projetos.
 
 
 
