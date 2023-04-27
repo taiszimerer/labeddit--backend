@@ -1,6 +1,9 @@
 import express from 'express'
 import cors from 'cors'
 import dotenv from 'dotenv'
+import { Request, Response } from 'express'
+import { db } from './knex'
+import knex from 'knex'
 
 dotenv.config()
 
@@ -12,3 +15,64 @@ app.use(express.json())
 app.listen(Number(process.env.PORT), () => {
     console.log(`Servidor rodando na porta ${Number(process.env.PORT)}`)
 })
+
+//getAllUsers
+app.get('/users', async (req: Request, res: Response) => {
+    try {
+        const result = await db.select("*").from("users")
+        res.status(200).send(result)
+
+    } catch (error: any) {
+        console.log(error)
+        if (res.statusCode === 200) {
+            res.status(500)
+        }
+
+        if (error instanceof Error) {
+            res.send(error.message)
+        } else {
+            res.send("Erro inesperado")
+        }
+    }
+})
+
+//Signup 
+app.post('/users/signup', async (req, res) => {
+    try {
+        const { id, name, email, password, role } = req.body;
+        const createdAt = new Date().toISOString(); // define a data de criação do usuário como a data atual
+
+        // Insere o novo usuário na tabela "users"
+        await db('users').insert({
+            id,
+            name,
+            email,
+            password,
+            role,
+            created_at: createdAt
+        });
+
+        res.status(201).send('Usuário criado com sucesso');
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Erro ao criar usuário');
+    }
+});
+
+//Login
+app.post('/users/login', async (req, res) => {
+    const { email, password } = req.body;
+    try {
+        const user = await db('users').select('*').where({ email }).first();
+        if (!user) {
+            return res.status(401).send({ message: 'Email ou senha inválidos' });
+        }
+        if (user.password !== password) {
+            return res.status(401).send({ message: 'Email ou senha inválidos' });
+        }
+        return res.status(200).send({ message: 'Login realizado com sucesso' });
+    } catch (error) {
+        console.log(error);
+        res.status(500).send({ message: 'Erro ao fazer login' });
+    }
+});
