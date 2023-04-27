@@ -237,6 +237,7 @@ Resposta esperada:
  
  
 #### Deploy Backend do projeto:
+https://labeddit-backend-934e.onrender.com
 
 #### Documentação API: 
 https://documenter.getpostman.com/view/24460855/2s93XsWkhs
