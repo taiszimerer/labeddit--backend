@@ -3,18 +3,16 @@ import cors from 'cors'
 import dotenv from 'dotenv'
 import { Request, Response } from 'express'
 import { db } from './knex'
-import knex from 'knex'
 
 dotenv.config()
-
 const app = express()
-
 app.use(cors())
 app.use(express.json())
 
 app.listen(Number(process.env.PORT), () => {
     console.log(`Servidor rodando na porta ${Number(process.env.PORT)}`)
 })
+const { v4: uuidv4 } = require('uuid'); // biblioteca para gerar ids únicos
 
 //getAllUsers
 app.get('/users', async (req: Request, res: Response) => {
@@ -36,19 +34,19 @@ app.get('/users', async (req: Request, res: Response) => {
     }
 })
 
-//Signup 
+//Signup
 app.post('/users/signup', async (req, res) => {
     try {
-        const { id, name, email, password, role } = req.body;
+        const { name, email, password } = req.body;
         const createdAt = new Date().toISOString(); // define a data de criação do usuário como a data atual
+        const id = uuidv4(); // gera um id único para o novo usuário
 
-        // Insere o novo usuário na tabela "users"
         await db('users').insert({
             id,
             name,
             email,
             password,
-            role,
+            role: 'user',
             created_at: createdAt
         });
 
@@ -58,7 +56,7 @@ app.post('/users/signup', async (req, res) => {
         res.status(500).send('Erro ao criar usuário');
     }
 });
-
+ 
 //Login
 app.post('/users/login', async (req, res) => {
     const { email, password } = req.body;
