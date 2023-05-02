@@ -74,3 +74,70 @@ app.post('/users/login', async (req, res) => {
         res.status(500).send({ message: 'Erro ao fazer login' });
     }
 });
+
+//getPosts
+app.get('/posts', async (req: Request, res: Response) => {
+    try {
+        const result = await db.select("*").from("posts")
+        res.status(200).send(result)
+
+    } catch (error: any) {
+        console.log(error)
+        if (res.statusCode === 200) {
+            res.status(500)
+        }
+
+        if (error instanceof Error) {
+            res.send(error.message)
+        } else {
+            res.send("Erro inesperado")
+        }
+    }
+})
+
+//createPost
+app.post('/posts', async (req: Request, res: Response) => {
+    try {
+        const { content } = req.body;
+        const createdAt = new Date().toISOString(); 
+        const id = uuidv4(); // gera um id único para o novo usuário
+
+        await db('posts').insert({
+            id,
+            creator_id: "i",    // mexer futuramente quando tiver o token.
+            content,
+            likes: 0,
+            comments: 0,
+            created_at: createdAt
+        });
+
+        res.status(201).send('Post criado com sucesso');
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Erro ao criar post');
+    }
+})
+
+//GetPostById
+app.get('/posts/:id', async (req: Request, res: Response) => {
+    try {
+        const id = req.params.id as string
+        const result = await db.select("*").from("posts").where("id", "=", id)
+
+        if (!result) {
+            res.status(400)
+            throw new Error("Post não existente")
+        }
+
+        res.status(200).send(result)
+    } catch (error: any) {
+        console.log(error)
+        if (res.statusCode === 200) {
+            res.status(500)
+        }
+        res.send(error.message)
+    }
+})
+
+
+
