@@ -23,15 +23,16 @@ posts (
     creator_id TEXT NOT NULL REFERENCES users (id),
     content TEXT NOT NULL,
     likes INTEGER NOT NULL, 
+    dislikes INTEGER NOT NULL,
     comments INTEGER NOT NULL,
     created_at TEXT DEFAULT (DATETIME()) NOT NULL
 );
 
-INSERT INTO posts (id, creator_id, content, likes, comments)
+INSERT INTO posts (id, creator_id, content, likes, dislikes, comments)
 VALUES
-	("p001", "nick01", "Se voce pudesse ter apenas um animal no mundo, qual seria?", 0, 1),
-	("p002", "nick02", "Porque algumas empresas não dão oportunidades para os juninhos?", 1, 1),
-	("p003", "nick02", "Porque algumas pessoas preferem celulares sansung do que Apple?", 0, 0);
+	("p001", "nick01", "Se voce pudesse ter apenas um animal no mundo, qual seria?", 0, 1, 1),
+	("p002", "nick02", "Porque algumas empresas não dão oportunidades para os juninhos?", 1, 1, 0),
+	("p003", "nick02", "Porque algumas pessoas preferem celulares sansung do que Apple?", 0, 0, 10);
 
 DROP TABLE posts;
 
@@ -39,7 +40,8 @@ CREATE TABLE
 posts_likes_dislikes (
     post_id TEXT NOT NULL REFERENCES posts (id),
     user_id TEXT NOT NULL REFERENCES users (id),
-    like INTEGER NOT NULL
+    like INTEGER NOT NULL,
+    dislike INTEGER NOT NULL
 );
 
 CREATE TABLE
@@ -49,6 +51,7 @@ comments (
     creator_id TEXT NOT NULL REFERENCES users (id),
     content TEXT NOT NULL,
     likes INTEGER NOT NULL, 
+    dislike INTEGER NOT NULL,
     created_at TEXT DEFAULT (DATETIME()) NOT NULL
 );
 
@@ -56,7 +59,8 @@ CREATE TABLE
 comments_likes_dislikes (
     user_id TEXT NOT NULL REFERENCES users (id),
     comment_id TEXT NOT NULL REFERENCES posts (id),
-    like INTEGER NOT NULL
+    like INTEGER NOT NULL,
+    dislike INTEGER NOT NULL
 );
     
 DROP TABLE comments_likes_dislikes;

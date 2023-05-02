@@ -107,6 +107,7 @@ app.post('/posts', async (req: Request, res: Response) => {
             creator_id: "i",    // mexer futuramente quando tiver o token.
             content,
             likes: 0,
+            dislikes: 0,
             comments: 0,
             created_at: createdAt
         });
@@ -138,6 +139,50 @@ app.get('/posts/:id', async (req: Request, res: Response) => {
         res.send(error.message)
     }
 })
+
+//LikePost 
+app.put('/posts/:id/like', async (req: Request, res: Response) => {
+    try {
+        const {id} = req.params 
+        const result = await db.select("*").from("posts").where({id}).increment("likes", 1)
+
+        if (!result) {
+            res.status(400)
+            throw new Error("Like não adicionado")
+        }
+
+        res.status(200).send(result)
+    } catch (error: any) {
+        console.log(error)
+        if (res.statusCode === 200) {
+            res.status(500)
+        }
+        res.send(error.message)
+    }
+})
+
+//DislikePost
+app.put('/posts/:id/like', async (req: Request, res: Response) => {
+    try {
+        const {id }= req.params
+        const result = await db.select("*").from("posts").where({id}).increment("dislikes", 1)
+
+        if (!result) {
+            res.status(400)
+            throw new Error("Dislike não adicionado")
+        }
+
+        res.status(200).send(result)
+    } catch (error: any) {
+        console.log(error)
+        if (res.statusCode === 200) {
+            res.status(500)
+        }
+        res.send(error.message)
+    }
+})
+
+
 
 
 
