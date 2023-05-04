@@ -56,7 +56,7 @@ app.post('/users/signup', async (req, res) => {
         res.status(500).send('Erro ao criar usuário');
     }
 });
- 
+
 //Login
 app.post('/users/login', async (req, res) => {
     const { email, password } = req.body;
@@ -99,7 +99,7 @@ app.get('/posts', async (req: Request, res: Response) => {
 app.post('/posts', async (req: Request, res: Response) => {
     try {
         const { content } = req.body;
-        const createdAt = new Date().toISOString(); 
+        const createdAt = new Date().toISOString();
         const id = uuidv4(); // gera um id único para o novo usuário
 
         await db('posts').insert({
@@ -140,15 +140,15 @@ app.get('/posts/:id', async (req: Request, res: Response) => {
     }
 })
 
-//LikePost 
+//LikePost PENDENTE
 app.put('/posts/:id/like', async (req: Request, res: Response) => {
     try {
-        const {id} = req.params 
-        const result = await db.select("*").from("posts").where({id}).increment("likes", 1)
+        const id = req.params.id 
+        const result = await db("posts").where("id", id).increment("likes", 1)
 
         if (!result) {
             res.status(400)
-            throw new Error("Like não adicionado")
+            throw new Error("Post não existente")
         }
 
         res.status(200).send(result)
@@ -161,27 +161,63 @@ app.put('/posts/:id/like', async (req: Request, res: Response) => {
     }
 })
 
-//DislikePost
-app.put('/posts/:id/like', async (req: Request, res: Response) => {
+// //DislikePost PENDENTE
+// app.put('/posts/:id/dislike', async (req: Request, res: Response) => {
+//     try {
+//         const {id }= req.params
+//         const result = await db.select("*").from("posts").where({id}).increment("dislikes", 1)
+
+//         if (!result) {
+//             res.status(400)
+//             throw new Error("Dislike não adicionado")
+//         }
+
+//         res.status(200).send(result)
+//     } catch (error: any) {
+//         console.log(error)
+//         if (res.statusCode === 200) {
+//             res.status(500)
+//         }
+//         res.send(error.message)
+//     }
+// })
+
+
+//
+
+
+//CreateCommentPost
+app.post('/posts/:id/comments', async (req: Request, res: Response) => {
     try {
-        const {id }= req.params
-        const result = await db.select("*").from("posts").where({id}).increment("dislikes", 1)
+        const { id } = req.params;
+        const { content } = req.body;
+        const createdAt = new Date().toISOString();
+        const commentId = uuidv4(); // gera um id único para o novo comentário
 
-        if (!result) {
-            res.status(400)
-            throw new Error("Dislike não adicionado")
+        // Verifica se o post existe
+        const post = await db('posts').where({ id }).first();
+        if (!post) {
+            return res.status(404).send('Post não encontrado');
         }
 
-        res.status(200).send(result)
-    } catch (error: any) {
-        console.log(error)
-        if (res.statusCode === 200) {
-            res.status(500)
-        }
-        res.send(error.message)
+        // Insere o novo comentário no banco de dados
+        await db('comments').insert({
+            id: commentId,
+            post_id: id,
+            creator_id: "i", // mexer futuramente quando tiver o token.
+            content,
+            created_at: createdAt
+        });
+
+        // Atualiza o contador de comentários do post
+         await db('posts').where({ id }).increment('comments', 1);
+
+        res.status(201).send('Comentário criado com sucesso');
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Erro ao criar comentário');
     }
-})
-
+});
 
 
 

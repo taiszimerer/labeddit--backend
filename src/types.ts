@@ -18,7 +18,6 @@ export interface PostModel {
     },
     content: string,
     likes: number,
-    dislikes: number,
     comments: number,
     createdAt: string
 }
@@ -28,7 +27,6 @@ export interface PostDB {
     creator_id: string,
     content: string,
     likes: number,
-    dislikes: number,
     comments: number,
     created_at: string
 }
