@@ -56,7 +56,7 @@ app.post('/users/signup', async (req, res) => {
         res.status(500).send('Erro ao criar usuário');
     }
 });
- 
+
 //Login
 app.post('/users/login', async (req, res) => {
     const { email, password } = req.body;
@@ -74,3 +74,151 @@ app.post('/users/login', async (req, res) => {
         res.status(500).send({ message: 'Erro ao fazer login' });
     }
 });
+
+//getPosts
+app.get('/posts', async (req: Request, res: Response) => {
+    try {
+        const result = await db.select("*").from("posts")
+        res.status(200).send(result)
+
+    } catch (error: any) {
+        console.log(error)
+        if (res.statusCode === 200) {
+            res.status(500)
+        }
+
+        if (error instanceof Error) {
+            res.send(error.message)
+        } else {
+            res.send("Erro inesperado")
+        }
+    }
+})
+
+//createPost
+app.post('/posts', async (req: Request, res: Response) => {
+    try {
+        const { content } = req.body;
+        const createdAt = new Date().toISOString();
+        const id = uuidv4(); // gera um id único para o novo usuário
+
+        await db('posts').insert({
+            id,
+            creator_id: "i",    // mexer futuramente quando tiver o token.
+            content,
+            likes: 0,
+            dislikes: 0,
+            comments: 0,
+            created_at: createdAt
+        });
+
+        res.status(201).send('Post criado com sucesso');
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Erro ao criar post');
+    }
+})
+
+//GetPostById
+app.get('/posts/:id', async (req: Request, res: Response) => {
+    try {
+        const id = req.params.id as string
+        const result = await db.select("*").from("posts").where("id", "=", id)
+
+        if (!result) {
+            res.status(400)
+            throw new Error("Post não existente")
+        }
+
+        res.status(200).send(result)
+    } catch (error: any) {
+        console.log(error)
+        if (res.statusCode === 200) {
+            res.status(500)
+        }
+        res.send(error.message)
+    }
+})
+
+//LikePost PENDENTE
+app.put('/posts/:id/like', async (req: Request, res: Response) => {
+    try {
+        const id = req.params.id 
+        const result = await db("posts").where("id", id).increment("likes", 1)
+
+        if (!result) {
+            res.status(400)
+            throw new Error("Post não existente")
+        }
+
+        res.status(200).send(result)
+    } catch (error: any) {
+        console.log(error)
+        if (res.statusCode === 200) {
+            res.status(500)
+        }
+        res.send(error.message)
+    }
+})
+
+// //DislikePost PENDENTE
+// app.put('/posts/:id/dislike', async (req: Request, res: Response) => {
+//     try {
+//         const {id }= req.params
+//         const result = await db.select("*").from("posts").where({id}).increment("dislikes", 1)
+
+//         if (!result) {
+//             res.status(400)
+//             throw new Error("Dislike não adicionado")
+//         }
+
+//         res.status(200).send(result)
+//     } catch (error: any) {
+//         console.log(error)
+//         if (res.statusCode === 200) {
+//             res.status(500)
+//         }
+//         res.send(error.message)
+//     }
+// })
+
+
+//
+
+
+//CreateCommentPost
+app.post('/posts/:id/comments', async (req: Request, res: Response) => {
+    try {
+        const { id } = req.params;
+        const { content } = req.body;
+        const createdAt = new Date().toISOString();
+        const commentId = uuidv4(); // gera um id único para o novo comentário
+
+        // Verifica se o post existe
+        const post = await db('posts').where({ id }).first();
+        if (!post) {
+            return res.status(404).send('Post não encontrado');
+        }
+
+        // Insere o novo comentário no banco de dados
+        await db('comments').insert({
+            id: commentId,
+            post_id: id,
+            creator_id: "i", // mexer futuramente quando tiver o token.
+            content,
+            created_at: createdAt
+        });
+
+        // Atualiza o contador de comentários do post
+         await db('posts').where({ id }).increment('comments', 1);
+
+        res.status(201).send('Comentário criado com sucesso');
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Erro ao criar comentário');
+    }
+});
+
+
+
+

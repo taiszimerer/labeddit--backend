@@ -48,7 +48,6 @@ comments (
     post_id TEXT NOT NULL REFERENCES posts (id),
     creator_id TEXT NOT NULL REFERENCES users (id),
     content TEXT NOT NULL,
-    likes INTEGER NOT NULL, 
     created_at TEXT DEFAULT (DATETIME()) NOT NULL
 );
 
@@ -60,6 +59,7 @@ comments_likes_dislikes (
 );
     
 DROP TABLE comments_likes_dislikes;
+DROP TABLE comments;
 SELECT * FROM users;
 
 SELECT * FROM posts;
