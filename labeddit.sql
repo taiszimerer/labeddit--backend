@@ -51,6 +51,8 @@ comments (
     created_at TEXT DEFAULT (DATETIME()) NOT NULL
 );
 
+SELECT * FROM comments;
+
 CREATE TABLE 
 comments_likes_dislikes (
     user_id TEXT NOT NULL REFERENCES users (id),
