@@ -28,7 +28,7 @@ posts (
     created_at TEXT DEFAULT (DATETIME()) NOT NULL
 );
 
-INSERT INTO posts (id, creator_id, content, likes, comments)
+INSERT INTO posts (id, creator_id, content, likes, dislikes, comments)
 VALUES
 	("p001", "nick01", "Se voce pudesse ter apenas um animal no mundo, qual seria?", 0, 1),
 	("p002", "nick02", "Porque algumas empresas não dão oportunidades para os juninhos?", 1, 1),
@@ -40,7 +40,8 @@ CREATE TABLE
 posts_likes_dislikes (
     post_id TEXT NOT NULL REFERENCES posts (id),
     user_id TEXT NOT NULL REFERENCES users (id),
-    like INTEGER NOT NULL
+    likes INTEGER NOT NULL REFERENCES posts (likes), 
+    dislikes INTEGER NOT NULL REFERENCES posts (dislikes)
 );
 
 DROP TABLE posts_likes_dislikes;
@@ -56,15 +57,9 @@ comments (
 
 SELECT * FROM comments;
 
-CREATE TABLE 
-comments_likes_dislikes (
-    user_id TEXT NOT NULL REFERENCES users (id),
-    comment_id TEXT NOT NULL REFERENCES posts (id),
-    like INTEGER NOT NULL
-);
-    
-DROP TABLE comments_likes_dislikes;
 DROP TABLE comments;
 SELECT * FROM users;
 
 SELECT * FROM posts;
+
+SELECT * FROM posts_likes_dislikes;

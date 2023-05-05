@@ -236,6 +236,29 @@ app.get('/posts/:id/comments', async (req: Request, res: Response) => {
     }
 });
 
+//LikeComment
+app.post('/comments/:commentId/like', async (req: Request, res: Response) => {
+    try {
+      const { commentId } = req.params;
+  
+      // Busca o comentário no banco de dados
+      const comment = await db('comments').where({ id: commentId }).first();
+      if (!comment) {
+        return res.status(404).send('Comentário não encontrado');
+      }
+  
+      // Incrementa o contador de likes do comentário
+      await db('comments').where({ id: commentId }).increment('likes', 1);
+  
+      res.status(200).send('Like adicionado com sucesso');
+    } catch (error) {
+      console.error(error);
+      res.status(500).send('Erro ao adicionar like');
+    }
+  });
+  
+
+//DislikeComment
 
 
 
