@@ -23,6 +23,7 @@ posts (
     creator_id TEXT NOT NULL REFERENCES users (id),
     content TEXT NOT NULL,
     likes INTEGER NOT NULL, 
+    dislikes INTEGER NOT NULL, 
     comments INTEGER NOT NULL,
     created_at TEXT DEFAULT (DATETIME()) NOT NULL
 );
@@ -41,6 +42,8 @@ posts_likes_dislikes (
     user_id TEXT NOT NULL REFERENCES users (id),
     like INTEGER NOT NULL
 );
+
+DROP TABLE posts_likes_dislikes;
 
 CREATE TABLE
 comments (
