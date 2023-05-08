@@ -46,7 +46,7 @@ app.post('/users/signup', async (req, res) => {
             name,
             email,
             password,
-            role: 'user',
+            role: "NORMAL",
             created_at: createdAt
         });
 
@@ -140,51 +140,47 @@ app.get('/posts/:id', async (req: Request, res: Response) => {
     }
 })
 
-//LikePost PENDENTE
+//LikePost 
 app.put('/posts/:id/like', async (req: Request, res: Response) => {
     try {
-        const id = req.params.id 
-        const result = await db("posts").where("id", id).increment("likes", 1)
+        const { id } = req.params;
 
-        if (!result) {
-            res.status(400)
-            throw new Error("Post não existente")
+        // Verifica se o post existe
+        const post = await db('posts').where({ id }).first();
+        if (!post) {
+            return res.status(404).send('Post não encontrado');
         }
 
-        res.status(200).send(result)
-    } catch (error: any) {
-        console.log(error)
-        if (res.statusCode === 200) {
-            res.status(500)
-        }
-        res.send(error.message)
+        // Atualiza o contador de likes do post
+        await db('posts').where({ id }).increment('likes', 1);
+
+        res.status(200).send('Like adicionado com sucesso');
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Erro ao adicionar like');
     }
-})
+});
 
-// //DislikePost PENDENTE
-// app.put('/posts/:id/dislike', async (req: Request, res: Response) => {
-//     try {
-//         const {id }= req.params
-//         const result = await db.select("*").from("posts").where({id}).increment("dislikes", 1)
+//DislikePost 
+app.put('/posts/:id/dislike', async (req: Request, res: Response) => {
+    try {
+        const { id } = req.params;
 
-//         if (!result) {
-//             res.status(400)
-//             throw new Error("Dislike não adicionado")
-//         }
+        // Verifica se o post existe
+        const post = await db('posts').where({ id }).first();
+        if (!post) {
+            return res.status(404).send('Post não encontrado');
+        }
 
-//         res.status(200).send(result)
-//     } catch (error: any) {
-//         console.log(error)
-//         if (res.statusCode === 200) {
-//             res.status(500)
-//         }
-//         res.send(error.message)
-//     }
-// })
+        // Atualiza o contador de likes do post
+        await db('posts').where({ id }).increment('dislikes', 1);
 
-
-//
-
+        res.status(200).send('Dislike adicionado com sucesso');
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Erro ao adicionar dislike');
+    }
+});
 
 //CreateCommentPost
 app.post('/posts/:id/comments', async (req: Request, res: Response) => {
@@ -210,7 +206,7 @@ app.post('/posts/:id/comments', async (req: Request, res: Response) => {
         });
 
         // Atualiza o contador de comentários do post
-         await db('posts').where({ id }).increment('comments', 1);
+        await db('posts').where({ id }).increment('comments', 1);
 
         res.status(201).send('Comentário criado com sucesso');
     } catch (error) {
@@ -219,6 +215,23 @@ app.post('/posts/:id/comments', async (req: Request, res: Response) => {
     }
 });
 
+//getCommentsbyPostId
+app.get('/posts/:id/comments', async (req: Request, res: Response) => {
+    try {
+        const { id } = req.params;
 
+        // Verifica se o post existe
+        const post = await db('posts').where({ id }).first();
+        if (!post) {
+            return res.status(404).send('Post não encontrado');
+        }
 
+        // Obtém todos os comentários do post
+        const comments = await db('comments').where({ post_id: id });
 
+        res.status(200).json(comments);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Erro ao buscar comentários');
+    }
+});
