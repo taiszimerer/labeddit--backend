@@ -141,7 +141,7 @@ app.get('/posts/:id', async (req: Request, res: Response) => {
 })
 
 //LikePost 
-app.post('/posts/:id/like', async (req: Request, res: Response) => {
+app.put('/posts/:id/like', async (req: Request, res: Response) => {
     try {
         const { id } = req.params;
 
@@ -162,7 +162,7 @@ app.post('/posts/:id/like', async (req: Request, res: Response) => {
 });
 
 //DislikePost 
-app.post('/posts/:id/dislike', async (req: Request, res: Response) => {
+app.put('/posts/:id/dislike', async (req: Request, res: Response) => {
     try {
         const { id } = req.params;
 
