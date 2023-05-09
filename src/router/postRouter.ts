@@ -1,6 +1,6 @@
 import express from 'express'
 import { PostBusiness } from '../business/PostBusiness'
-import { PostController } from '../../controller/postController'
+import { PostController } from '../controller/PostController'
 import { PostDatabase } from '../database/PostDatabase'
 import { IdGenerator } from '../services/IdGenerator'
 import { TokenManager } from '../services/TokenManager'
@@ -20,4 +20,4 @@ postRouter.get("/:id", postController.getPostById)
 postRouter.put("/:id/like", postController.likePost)
 postRouter.put('/:id/dislike', postController.dislikePost)
 postRouter.post('/:id/comments', postController.createCommentPost)
-postRouter.get('/:id/comments', postController.getCommentsbyPostId)
+postRouter.get('/:id/comments', postController.getCommentsByPostId)
