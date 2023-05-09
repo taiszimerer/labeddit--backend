@@ -1,25 +1,21 @@
-import { PostModel } from "../types"
+import { PostModel } from "../models/Post"
 
-export interface GetPostInputDTO {
+export interface GetPostsInputDTO {
     token: string | undefined
 }
 
-export type GetPostOutputDTO = PostModel[]
+export type GetPostsOutputDTO = PostModel[]
 
 export interface CreatePostInputDTO {
-    token: string | undefined
-    content: unknown
-}
-
-export interface EditPostInputDTO {
-    idToEdit: string,
     token: string | undefined,
     content: unknown
 }
-export interface DeletePostInputDTO {
-    idToDelete: string,
+
+export interface GetPostByIdInputDTO {
+    idPost: string,
     token: string | undefined
 }
+
 export interface LikePostInputDTO {
     idToLike: string,
     token: string | undefined, 
@@ -29,4 +25,13 @@ export interface DislikePostInputDTO {
     idToDislike: string,
     token: string | undefined, 
     dislike: unknown
+}
+
+export interface CreateCommentPostInputDTO {
+    token: string | undefined,
+    content: unknown
+}
+export interface GetCommentByPostIdInputDTO {
+    idPost: string,
+    token: string | undefined,
 }

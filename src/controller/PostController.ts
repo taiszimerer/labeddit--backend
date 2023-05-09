@@ -1,17 +1,15 @@
-// import { Request, Response } from "express"
-// import { PostBusiness } from "../business/PostBusiness";
+import { Request, Response } from "express"
+import { PostBusiness } from "../business/PostBusiness";
 // import { CreatePostInputDTO, DeletePostInputDTO, EditPostInputDTO, GetPostInputDTO, LikeOrDislikePostInputDTO } from "../src/dtos/postDTO";
 // import { BaseError } from "../errors/BaseError";
 
 export class PostController {
-    
+        constructor(
+        private postBusiness: PostBusiness
+    ) { }
 }
 
 
-// export class PostController {
-//     constructor(
-//         private postBusiness: PostBusiness
-//     ) { }
 
 //     public getPosts = async (req: Request, res: Response) => {
 //         try {

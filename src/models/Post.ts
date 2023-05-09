@@ -1,4 +1,3 @@
-
 export interface PostModel {
     id: string,
     creator: {

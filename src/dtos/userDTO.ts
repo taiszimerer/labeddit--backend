@@ -1,6 +1,10 @@
+import { UserModel } from "../models/User"
+
 export interface GetUsersInputDTO {
     token: string | undefined
 }
+
+export type GetUsersOutputDTO = UserModel[]
 
 export interface SignupInputDTO {
     name: unknown,

@@ -1,12 +1,14 @@
 import { Request, Response } from "express"
-// import { UserBusiness } from "../business/UserBusiness"
+import { UserBusiness } from "../business/UserBusiness"
 // import { LoginInputDTO, SignupInputDTO} from "../src/dtos/userDTO"
-// import { BaseError } from "../errors/BaseError"
 import { db } from '../knex'
 import { BaseError } from "../errors/BaseError";
 const { v4: uuidv4 } = require('uuid'); // biblioteca para gerar ids únicos
 
 export class UserController {
+        constructor(
+        private userBusiness: UserBusiness
+    ) { }
 
 //getUsers
 public getUsers = async (req: Request, res: Response) => {
@@ -71,9 +73,7 @@ public login = async (req: Request, res: Response) => {
 
 
 
-//     constructor(
-//         private userBusiness: UserBusiness
-//     ) { }
+
 
     
 
