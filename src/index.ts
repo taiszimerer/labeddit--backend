@@ -119,7 +119,7 @@ app.post('/posts', async (req: Request, res: Response) => {
     }
 })
 
-//GetPostById
+//getPostById
 app.get('/posts/:id', async (req: Request, res: Response) => {
     try {
         const id = req.params.id as string
@@ -140,7 +140,7 @@ app.get('/posts/:id', async (req: Request, res: Response) => {
     }
 })
 
-//LikePost 
+//likePost 
 app.put('/posts/:id/like', async (req: Request, res: Response) => {
     try {
         const { id } = req.params;
@@ -161,7 +161,7 @@ app.put('/posts/:id/like', async (req: Request, res: Response) => {
     }
 });
 
-//DislikePost 
+//dislikePost 
 app.put('/posts/:id/dislike', async (req: Request, res: Response) => {
     try {
         const { id } = req.params;
@@ -182,7 +182,7 @@ app.put('/posts/:id/dislike', async (req: Request, res: Response) => {
     }
 });
 
-//CreateCommentPost
+//createCommentPost
 app.post('/posts/:id/comments', async (req: Request, res: Response) => {
     try {
         const { id } = req.params;
