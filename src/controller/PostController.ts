@@ -23,7 +23,7 @@ public getPosts = async (req: Request, res: Response) => {
        } else {
             res.status(500).send("Erro inesperado")
        }
-}
+    }
 }
 
 //createPost
@@ -45,9 +45,13 @@ public createPost = async (req: Request, res: Response) => {
 
         res.status(201).send('Post criado com sucesso');
     } catch (error) {
-        console.error(error);
-        res.status(500).send('Erro ao criar post');
-    }
+        console.log(error)
+        if (error instanceof BaseError) {
+            res.status(error.statusCode).send(error.message)
+        } else {
+             res.status(500).send("Erro inesperado")
+        }
+     }
 }
 
 //getPostById
@@ -62,13 +66,14 @@ public getPostById = async (req: Request, res: Response) => {
         }
 
         res.status(200).send(result)
-    } catch (error: any) {
+    } catch (error) {
         console.log(error)
-        if (res.statusCode === 200) {
-            res.status(500)
+        if (error instanceof BaseError) {
+            res.status(error.statusCode).send(error.message)
+        } else {
+             res.status(500).send("Erro inesperado")
         }
-        res.send(error.message)
-    }
+     }
 }
 
 //likePost 
@@ -87,9 +92,13 @@ public likePost = async (req: Request, res: Response) => {
 
         res.status(200).send('Like adicionado com sucesso');
     } catch (error) {
-        console.error(error);
-        res.status(500).send('Erro ao adicionar like');
-    }
+        console.log(error)
+        if (error instanceof BaseError) {
+            res.status(error.statusCode).send(error.message)
+        } else {
+             res.status(500).send("Erro inesperado")
+        }
+     }
 };
 
 //dislikePost 
@@ -108,9 +117,13 @@ public dislikePost = async (req: Request, res: Response) => {
 
         res.status(200).send('Dislike adicionado com sucesso');
     } catch (error) {
-        console.error(error);
-        res.status(500).send('Erro ao adicionar dislike');
-    }
+        console.log(error)
+        if (error instanceof BaseError) {
+            res.status(error.statusCode).send(error.message)
+        } else {
+             res.status(500).send("Erro inesperado")
+        }
+     }
 };
 
 //createCommentPost
@@ -141,9 +154,13 @@ public createCommentPost = async (req: Request, res: Response) => {
 
         res.status(201).send('Comentário criado com sucesso');
     } catch (error) {
-        console.error(error);
-        res.status(500).send('Erro ao criar comentário');
-    }
+        console.log(error)
+        if (error instanceof BaseError) {
+            res.status(error.statusCode).send(error.message)
+        } else {
+             res.status(500).send("Erro inesperado")
+        }
+     }
 };
 
 //getCommentsbyPostId
@@ -162,9 +179,13 @@ public getCommentsByPostId = async (req: Request, res: Response) => {
 
         res.status(200).json(comments);
     } catch (error) {
-        console.error(error);
-        res.status(500).send('Erro ao buscar comentários');
-    }
+        console.log(error)
+        if (error instanceof BaseError) {
+            res.status(error.statusCode).send(error.message)
+        } else {
+             res.status(500).send("Erro inesperado")
+        }
+     }
 };
 }
 
