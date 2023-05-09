@@ -95,7 +95,7 @@ export class User {
         }
     }
 
-    public toBusinessModel(): UserModel {
+    public toBusinessModel(): UserModel {   //modelo do front end
         return {
             id: this.id,
             name: this.name,

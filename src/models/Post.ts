@@ -1,15 +1,37 @@
-import { PostDB, PostModel } from "../types"
+
+export interface PostModel {
+    id: string,
+    creator: {
+        id: string, 
+        name: string
+    },
+    content: string,
+    likes: number,
+    dislikes: number,
+    comments: number,
+    createdAt: string
+}
+
+export interface PostDB {
+    id: string,
+    creator_id: string,
+    content: string,
+    likes: number,
+    dislikes: number,
+    comments: number,
+    created_at: string
+}
 
 export class Post {
     constructor(
         private id: string,
+        private creatorId: string,
+        private creatorName: string,
         private content: string,
         private likes: number,
         private dislikes: number,
-        private createdAt: string,
-        private updatedAt: string,
-        private creatorId: string,
-        private creatorName: string
+        private comments: number,
+        private createdAt: string,       
     ) { }
 
     public getId(): string {
@@ -40,16 +62,8 @@ export class Post {
         this.likes += 1 
     }
 
-    public removeLike (){
-        this.likes -= 1 
-    }
-
     public addDislike (){
         this.dislikes += 1 
-    }
-
-    public removeDislike (){
-        this.dislikes -= 1 
     }
     
     public getDislikes(): number {
@@ -60,20 +74,20 @@ export class Post {
         this.dislikes = value 
     }
 
+    public getComments(): number {
+        return this.comments
+    }
+
+    public setComments(value: number): void {
+        this.comments = value 
+    }
+
     public getCreatedAt(): string {
         return this.createdAt
     }
 
     public setCreatedAt(value: string): void {
         this.createdAt = value 
-    }
-
-    public getUpdatedAt(): string {
-        return this.updatedAt
-    }
-
-    public setUpdatedAt(value: string): void {
-        this.updatedAt = value 
     }
 
     public getCreatorId(): string {
@@ -99,8 +113,8 @@ export class Post {
             content: this.content,
             likes: this.likes,
             dislikes: this.dislikes,
+            comments: this.comments,
             created_at: this.createdAt,
-            updated_at: this.updatedAt
         }
     }
 
@@ -110,8 +124,8 @@ export class Post {
             content: this.content,
             likes: this.likes,
             dislikes: this.dislikes,
+            comments: this.comments,
             createdAt: this.createdAt,
-            updatedAt: this.updatedAt,
             creator: {
                 id: this.creatorId,
                 name: this.creatorName
