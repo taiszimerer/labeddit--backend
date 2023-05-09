@@ -14,7 +14,7 @@ app.listen(Number(process.env.PORT), () => {
 })
 const { v4: uuidv4 } = require('uuid'); // biblioteca para gerar ids únicos
 
-//getAllUsers
+//getUsers
 app.get('/users', async (req: Request, res: Response) => {
     try {
         const result = await db.select("*").from("users")
@@ -74,6 +74,11 @@ app.post('/users/login', async (req, res) => {
         res.status(500).send({ message: 'Erro ao fazer login' });
     }
 });
+
+
+
+
+
 
 //getPosts
 app.get('/posts', async (req: Request, res: Response) => {

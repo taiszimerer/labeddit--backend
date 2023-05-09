@@ -1,7 +1,7 @@
 import express from 'express'
-// import { UserBusiness } from '../business/UserBusiness'
-// import { UserController } from '../controller/UserController'
-// import { UserDatabase } from '../database/UserDatabase'
+import { UserBusiness } from '../business/UserBusiness'
+import { UserController } from '../../controller/UserController'
+import { UserDatabase } from '../database/UserDatabase'
 import { HashManager } from '../services/HashManager'
 import { IdGenerator } from '../services/IdGenerator'
 import { TokenManager } from '../services/TokenManager'
@@ -15,6 +15,6 @@ const userController = new UserController(
         new HashManager()
     )
 )
-userRouter.get('/', userController.getAllUsers)
+userRouter.get('/', userController.getUsers)
 userRouter.post('/signup', userController.signup)
 userRouter.post('/login', userController.login)
