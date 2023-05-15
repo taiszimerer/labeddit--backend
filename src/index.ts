@@ -75,11 +75,6 @@ app.post('/users/login', async (req, res) => {
     }
 });
 
-
-
-
-
-
 //getPosts
 app.get('/posts', async (req: Request, res: Response) => {
     try {
