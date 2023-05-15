@@ -199,42 +199,6 @@ Resposta esperada:
  }
  ```
  
- #### Like ao comentario
- Endpoint que permite adicionar like a um comentário especifico.  Requer autenticação.
-	
- URL: /comments/:id/like
-	
- Método: PUT
-	
- Resposta esperada:
- ```bash
-  {    
-  "id": "string",   
-  "content": "string",   
-  "creator_id": "string",     
-  "likes": 1,   
-  "created_at": "string"  
-  }
-  ```
-  
- #### Dislike ao comentario
- Endpoint que permite adicionar dislike a um comentário especifico.  Requer autenticação.
-	
- URL: /comments/:id/dislike
-	
- Método: PUT
-	
- Resposta esperada:
- ```bash
-  {    
-  "id": "string",   
-  "content": "string",   
-  "creator_id": "string",     
-  "likes": 0,   
-  "created_at": "string"  
-  }
-  ```
- 
  
 #### Deploy Backend do projeto:
 https://labeddit-backend-934e.onrender.com
